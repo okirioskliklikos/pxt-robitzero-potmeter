@@ -1,0 +1,51 @@
+/**
+ * Functions to operate a Potmeter
+ */
+//% block="Pot"
+//% groups=['Values']
+//% weight=6 color=#ff6f00 icon="\uf0a9"
+namespace rb0potmeter {
+
+    /**
+    * Initialize Pot
+    * @param port Keyestudio port where the Pot is connected
+    */
+    //% blockId="rb0potmeter_simplecreate"
+    //% block="Pot at port %port" 
+    //% weight=90 color=100 blockGap=24
+    //% port.defl=KeyestudioPort.P0
+    export function rb0potmeter_simplecreate(port: KeyestudioPort) {
+        let pin1 = rb0base.getPinFromKeyestudioPort(port);
+        rb0base.enablePin(pin1);
+    }
+
+    /**
+    * Initialize Potmeter
+    * @param pin1 pin where the Pot is connected
+    */
+    //% blockId="rb0potmeter_advancedcreate"
+    //% block="Pot at pin %pin2" 
+    //% weight=90 color=100 blockGap=24 advanced=true
+    //% pin1.defl=DigitalPin.P0
+    export function rb0potmeter_advancedcreate(pin1: DigitalPin) {
+        rb0base.enablePin(pin1);
+    }
+
+    /**
+     * Read Pot value that is connected in port
+     */
+    //% block="pot value on %port"
+    //% group="Values"
+    //% weight=70
+    export function readPot(port: KeyestudioPort): number {
+        let pin1 = rb0base.getPinFromKeyestudioPort(port);
+        let value = pins.analogReadPin(AnalogPin.P0);
+        value = value > 1010 ? 1023 : value;
+        value /= 1023;
+        value = value > 0.99 ? 1.0 : value;
+        value = value ** 0.54;
+        value *= 100;
+        return value;
+    }
+
+}
