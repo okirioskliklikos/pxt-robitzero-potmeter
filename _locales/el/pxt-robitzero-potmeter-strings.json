@@ -1,0 +1,9 @@
+{
+  "rb0potmeter.rb0potmeter_advancedcreate|block": "ροοστάτης στον ακροδέκτη %pin2",
+  "rb0potmeter.rb0potmeter_simplecreate|block": "ροοστάτης στην θύρα %port",
+  "rb0potmeter.readPotAdvanced|block": "τιμή ροοστάτη %pin",
+  "rb0potmeter.readPotSimple|block": "τιμή ροοστάτη %port",
+  "rb0potmeter|block": "Ροοστάτης",
+  "{id:category}Rb0potmeter": "Rb0potmeter",
+  "{id:group}Values": "Τιμές"
+}

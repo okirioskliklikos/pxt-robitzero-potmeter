@@ -6,6 +6,15 @@
 //% weight=6 color=#ff6f00 icon="\uf0a9"
 namespace rb0potmeter {
 
+    function getPercentage(value: number): number{
+        value = value > 1010 ? 1023 : value;
+        value /= 1023;
+        value = value > 0.99 ? 1.0 : value;
+        value = value ** 0.54;
+        value *= 100;
+        return value;
+    }
+    
     /**
     * Initialize Pot
     * @param port Keyestudio port where the Pot is connected
@@ -32,20 +41,26 @@ namespace rb0potmeter {
     }
 
     /**
-     * Read Pot value that is connected in port
+     * Read Pot value that is connected at port
      */
+    //% blockId="rb0potmeter_simpleReadPot"
     //% block="pot value on %port"
     //% group="Values"
     //% weight=70
-    export function readPot(port: KeyestudioPort): number {
+    export function readPotSimple(port: KeyestudioPort): number {
         let pin1 = rb0base.getPinFromKeyestudioPort(port);
-        let value = pins.analogReadPin(AnalogPin.P0);
-        value = value > 1010 ? 1023 : value;
-        value /= 1023;
-        value = value > 0.99 ? 1.0 : value;
-        value = value ** 0.54;
-        value *= 100;
-        return value;
+        return getPercentage(pins.analogReadPin(pin1));
+    }
+    
+     /**
+     * Read Pot value that is connected at pin
+     */
+    //% blockId="rb0potmeter_advancedReadPot"
+    //% block="pot value on %pin"
+    //% group="Values"
+    //% weight=70
+    export function readPotAdvanced(pin: DigitalPin): number {
+        return getPercentage(pins.analogReadPin(pin));        
     }
 
 }

@@ -1,0 +1,9 @@
+{
+  "rb0potmeter.rb0potmeter_advancedcreate|block": "Pot at pin %pin2",
+  "rb0potmeter.rb0potmeter_simplecreate|block": "Pot at port %port",
+  "rb0potmeter.readPotAdvanced|block": "pot value on %pin",
+  "rb0potmeter.readPotSimple|block": "pot value on %port",
+  "rb0potmeter|block": "Pot",
+  "{id:category}Rb0potmeter": "Rb0potmeter",
+  "{id:group}Values": "Values"
+}
