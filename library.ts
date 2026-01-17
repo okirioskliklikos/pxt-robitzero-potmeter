@@ -69,7 +69,7 @@ namespace rb0potmeter {
     //% blockId="rb0potmeter_advancedReadPotRealValue"
     //% block="pot real value on %port"
     //% group="Values"
-    //% weight=60
+    //% weight=60 advanced=true
     export function readPotRealValueAdvanced(port: KeyestudioPort): number {
         let pin1 = rb0base.getPinFromKeyestudioPort(port);
         return pins.analogReadPin(pin1);
