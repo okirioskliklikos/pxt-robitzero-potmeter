@@ -58,7 +58,7 @@ namespace rb0potmeter {
     //% blockId="rb0potmeter_advancedReadPot"
     //% block="pot value on %pin"
     //% group="Values"
-    //% weight=70
+    //% weight=70 advanced=true
     export function readPotAdvanced(pin: DigitalPin): number {
         return getPercentage(pins.analogReadPin(pin));        
     }

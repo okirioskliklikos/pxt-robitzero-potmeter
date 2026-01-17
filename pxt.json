@@ -15,7 +15,7 @@
         "custom.ts",
         "library.ts",
         "_locales/en/pxt-robitzero-potmeter-strings.json",
-        "_locales/el/pxt-robitzero-potmeter-strings.json"        
+        "_locales/el/pxt-robitzero-potmeter-strings.json"
     ],
     "testFiles": [
         "test.ts"
