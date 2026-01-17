@@ -63,4 +63,16 @@ namespace rb0potmeter {
         return getPercentage(pins.analogReadPin(pin));        
     }
 
+    /**
+    * Read Pot real value that is connected at port
+    */
+    //% blockId="rb0potmeter_advancedReadPotRealValue"
+    //% block="pot real value on %port"
+    //% group="Values"
+    //% weight=60
+    export function readPotRealValueAdvanced(port: KeyestudioPort): number {
+        let pin1 = rb0base.getPinFromKeyestudioPort(port);
+        return pins.analogReadPin(pin1);
+    }
+
 }
