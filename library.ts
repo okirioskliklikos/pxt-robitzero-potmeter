@@ -19,11 +19,11 @@ namespace rb0potmeter {
     * Initialize Pot
     * @param port Keyestudio port where the Pot is connected
     */
-    //% blockId="rb0potmeter_simplecreate"
+    //% blockId="rb0potmeter_initSimple"
     //% block="Pot at port %port" 
     //% weight=90 color=100 blockGap=24
     //% port.defl=KeyestudioPort.P0
-    export function rb0potmeter_simplecreate(port: KeyestudioPort) {
+    export function initSimple(port: KeyestudioPort) {
         let pin1 = rb0base.getPinFromKeyestudioPort(port);
         rb0base.enablePin(pin1);
     }
@@ -32,18 +32,18 @@ namespace rb0potmeter {
     * Initialize Potmeter
     * @param pin1 pin where the Pot is connected
     */
-    //% blockId="rb0potmeter_advancedcreate"
+    //% blockId="rb0potmeter_initAdvanced"
     //% block="Pot at pin %pin2" 
     //% weight=90 color=100 blockGap=24 advanced=true
     //% pin1.defl=DigitalPin.P0
-    export function rb0potmeter_advancedcreate(pin1: DigitalPin) {
+    export function initAdvanced(pin1: DigitalPin) {
         rb0base.enablePin(pin1);
     }
 
     /**
      * Read Pot value that is connected at port
      */
-    //% blockId="rb0potmeter_simpleReadPot"
+    //% blockId="rb0potmeter_readPotSimple"
     //% block="pot value on %port"
     //% group="Values"
     //% weight=70
@@ -55,7 +55,7 @@ namespace rb0potmeter {
      /**
      * Read Pot value that is connected at pin
      */
-    //% blockId="rb0potmeter_advancedReadPot"
+    //% blockId="rb0potmeter_readPotAdvanced"
     //% block="pot value on %pin"
     //% group="Values"
     //% weight=70 advanced=true
@@ -66,7 +66,7 @@ namespace rb0potmeter {
     /**
     * Read Pot real value that is connected at port
     */
-    //% blockId="rb0potmeter_advancedReadPotRealValue"
+    //% blockId="rb0potmeter_readPotRealValueAdvanced"
     //% block="pot real value on %port"
     //% group="Values"
     //% weight=60 advanced=true
