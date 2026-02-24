@@ -23,8 +23,8 @@ namespace rb0potmeter {
     //% block="Pot at port %port" 
     //% weight=90 color=100 blockGap=24
     //% port.defl=KeyestudioPort.P0
-    export function initSimple(port: KeyestudioPort) {
-        let pin1 = rb0base.getPinFromKeyestudioPort(port);
+    export function initSimple(port: KeyestudioAnalogPort) {
+        let pin1 = rb0base.getPinFromKeyestudioAnalogPort(port);
         rb0base.enablePin(pin1);
     }
 
@@ -36,8 +36,8 @@ namespace rb0potmeter {
     //% block="Pot at pin %pin2" 
     //% weight=90 color=100 blockGap=24 advanced=true
     //% pin1.defl=DigitalPin.P0
-    export function initAdvanced(pin1: DigitalPin) {
-        rb0base.enablePin(pin1);
+    export function initAdvanced(pin1: AnalogPin) {
+        rb0base.enablePin(pin1 as number);
     }
 
     /**
