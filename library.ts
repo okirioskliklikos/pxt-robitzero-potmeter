@@ -6,13 +6,26 @@
 //% weight=6 color=#ff6f00 icon="\uf0a9"
 namespace rb0potmeter {
 
+    const CALMP0 = 0.54;
+    const CALMP1P10 = 0.79;
+
+    let CALM = CALMP0;
+
     function getPercentage(value: number): number{
         value = value > 1010 ? 1023 : value;
         value /= 1023;
         value = value > 0.99 ? 1.0 : value;
-        value = value ** 0.54;
+        value = value ** CALM;
         value *= 100;
         return value;
+    }
+
+    function adjustToPin(pin: DigitalPin) {
+        if (pin === DigitalPin.P0) {
+            CALM = CALMP0;
+        } else {
+            CALM = CALMP1P10
+        }
     }
     
     /**
@@ -25,6 +38,7 @@ namespace rb0potmeter {
     //% port.defl=KeyestudioPort.P0
     export function initSimple(port: KeyestudioAnalogPort) {
         let pin1 = rb0base.getPinFromKeyestudioAnalogPort(port);
+        adjustToPin(pin1);
         rb0base.enablePin(pin1);
     }
 
@@ -37,6 +51,7 @@ namespace rb0potmeter {
     //% weight=90 color=100 blockGap=24 advanced=true
     //% pin1.defl=DigitalPin.P0
     export function initAdvanced(pin1: AnalogPin) {
+        adjustToPin(pin1 as number);
         rb0base.enablePin(pin1 as number);
     }
 
@@ -47,8 +62,8 @@ namespace rb0potmeter {
     //% block="pot value on %port"
     //% group="Values"
     //% weight=70
-    export function readPotSimple(port: KeyestudioPort): number {
-        let pin1 = rb0base.getPinFromKeyestudioPort(port);
+    export function readPotSimple(port: KeyestudioAnalogPort): number {
+        let pin1 = rb0base.getPinFromKeyestudioAnalogPort(port);
         return getPercentage(pins.analogReadPin(pin1));
     }
     
@@ -59,7 +74,7 @@ namespace rb0potmeter {
     //% block="pot value on %pin"
     //% group="Values"
     //% weight=70 advanced=true
-    export function readPotAdvanced(pin: DigitalPin): number {
+    export function readPotAdvanced(pin: AnalogPin): number {
         return getPercentage(pins.analogReadPin(pin));        
     }
 
@@ -70,8 +85,8 @@ namespace rb0potmeter {
     //% block="pot real value on %port"
     //% group="Values"
     //% weight=60 advanced=true
-    export function readPotRealValueAdvanced(port: KeyestudioPort): number {
-        let pin1 = rb0base.getPinFromKeyestudioPort(port);
+    export function readPotRealValueAdvanced(port: KeyestudioAnalogPort): number {
+        let pin1 = rb0base.getPinFromKeyestudioAnalogPort(port);
         return pins.analogReadPin(pin1);
     }
 
