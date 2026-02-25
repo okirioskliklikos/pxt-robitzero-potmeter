@@ -1,5 +1,5 @@
 {
-  "rb0potmeter.initAdvanced|block": "ροοστάτης στο %pin2",
+  "rb0potmeter.initAdvanced|block": "ροοστάτης στο %pin1",
   "rb0potmeter.initSimple|block": "ροοστάτης στην θύρα %port",
   "rb0potmeter.readPotAdvanced|block": "τιμή ροοστάτη %pin",
   "rb0potmeter.readPotRealValueAdvanced|block": "πραγματική τιμή ροοστάτη %port",
