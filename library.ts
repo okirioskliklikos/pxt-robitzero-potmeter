@@ -54,10 +54,11 @@ namespace rb0potmeter {
     * @param pin1 pin where the Pot is connected
     */
     //% blockId="rb0potmeter_initAdvanced"
-    //% block="Pot at pin %pin2" 
+    //% block="Pot at pin %pin1" 
     //% weight=90 color=100 blockGap=24 advanced=true
+    //% pin1.fieldEditor=pinpicker
     //% pin1.defl=DigitalPin.P0
-    export function initAdvanced(pin1: AnalogPin) {
+    export function initAdvanced(pin1: AnalogReadWritePin) {
         adjustToPin(pin1 as number);
         rb0base.enablePin(pin1 as number);
     }
@@ -81,8 +82,9 @@ namespace rb0potmeter {
     //% block="pot value on %pin"
     //% group="Values"
     //% weight=70 advanced=true
-    export function readPotAdvanced(pin: AnalogPin): number {
-        return getPercentage(pins.analogReadPin(pin));        
+    //% pin.fieldEditor=pinpicker
+    export function readPotAdvanced(pin: AnalogReadWritePin): number {
+        return getPercentage(pins.analogReadPin(pin as number));        
     }
 
     /**
